@@ -1,0 +1,1255 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>겨울 별채의 서자 — 벨몬가 3공자 루베루스</title>
+<meta name="description" content="소설 《황녀의 밤은 차갑다》 속 흑화 악역으로 예정된 서자 루베루스 스토리챗." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --bg: #f5f1e8;
+    --bg-raise: #ffffff;
+    --bg-card: #fcfaf5;
+    --text: #211d29;
+    --text-dim: #6b6455;
+    --ice: #2f6e8f;
+    --ice-soft: #7fa9bc;
+    --amber: #8a5a24;
+    --amber-strong: #b5762f;
+    --wine: #7a3230;
+    --wine-light: rgba(122, 50, 48, 0.08);
+    --border: #cdbfa0;
+    --hairline: rgba(33, 29, 41, 0.12);
+    --shadow: rgba(40, 30, 10, 0.08);
+    --radius: 8px;
+    --nav-bg: rgba(245, 241, 232, 0.92);
+  }
+
+  [data-theme="dark"] {
+    --bg: #0b0f17;
+    --bg-raise: #131a24;
+    --bg-card: #18212e;
+    --text: #e9ecf1;
+    --text-dim: #8b95a3;
+    --ice: #8fc4e3;
+    --ice-soft: #4f7f9c;
+    --amber: #d9a45c;
+    --amber-strong: #e7bd80;
+    --wine: #e07a76;
+    --wine-light: rgba(224, 122, 118, 0.12);
+    --border: #2a3442;
+    --hairline: rgba(233, 236, 241, 0.12);
+    --shadow: rgba(0, 0, 0, 0.45);
+    --nav-bg: rgba(11, 15, 23, 0.92);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0b0f17;
+      --bg-raise: #131a24;
+      --bg-card: #18212e;
+      --text: #e9ecf1;
+      --text-dim: #8b95a3;
+      --ice: #8fc4e3;
+      --ice-soft: #4f7f9c;
+      --amber: #d9a45c;
+      --amber-strong: #e7bd80;
+      --wine: #e07a76;
+      --wine-light: rgba(224, 122, 118, 0.12);
+      --border: #2a3442;
+      --hairline: rgba(233, 236, 241, 0.12);
+      --shadow: rgba(0, 0, 0, 0.45);
+      --nav-bg: rgba(11, 15, 23, 0.92);
+    }
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 300;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  h1, h2, h3, h4, .serif { font-family: 'Noto Serif KR', serif; }
+  a { color: inherit; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+  .frame { overflow-x: hidden; }
+
+  nav.top {
+    position: sticky; top: 0; z-index: 50;
+    background: var(--nav-bg);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--hairline);
+  }
+  nav.top .wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+  .brand { display: flex; align-items: center; gap: 10px; font-family: 'Noto Serif KR', serif; font-weight: 600; letter-spacing: 0.02em; font-size: 15px; }
+  .brand svg { width: 22px; height: 22px; flex-shrink: 0; color: var(--wine); }
+  .nav-right { display: flex; align-items: center; gap: 16px; }
+  .navlinks { display: flex; gap: 20px; font-size: 13.5px; color: var(--text-dim); }
+  .navlinks a { text-decoration: none; transition: color .2s ease; }
+  .navlinks a[href="#preview"] { font-weight: 700; }
+  .navlinks a:hover, .navlinks a:focus-visible { color: var(--ice); }
+  
+  .theme-toggle {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.2s ease;
+  }
+  .theme-toggle:hover { border-color: var(--wine); }
+
+  .navtoggle { display: none; background: none; border: 1px solid var(--border); color: var(--text); border-radius: 4px; padding: 6px 10px; font-family: 'Noto Sans KR', sans-serif; cursor: pointer; }
+
+  @media (max-width: 880px) {
+    .navlinks {
+      position: absolute; top: 64px; left: 0; right: 0;
+      background: var(--bg-raise); border-bottom: 1px solid var(--hairline);
+      flex-direction: column; padding: 20px 24px; gap: 16px;
+      display: none; box-shadow: 0 8px 24px var(--shadow);
+    }
+    .navlinks.open { display: flex; }
+    .navtoggle { display: inline-block; }
+  }
+
+  header.hero {
+    position: relative;
+    padding: 60px 0 50px;
+    overflow: hidden;
+    border-bottom: 1px solid var(--hairline);
+  }
+  header.hero::before {
+    content: "";
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(circle at 82% 12%, rgba(122, 50, 48, 0.12), transparent 45%),
+      radial-gradient(circle at 10% 88%, rgba(47, 110, 143, 0.12), transparent 50%);
+    pointer-events: none;
+  }
+  .frost-field { position: absolute; inset: 0; pointer-events: none; opacity: .4; }
+  .frost-field span {
+    position: absolute; width: 3px; height: 3px; border-radius: 50%;
+    background: var(--ice-soft);
+    animation: drift 14s linear infinite;
+    opacity: .55;
+  }
+  @keyframes drift {
+    from { transform: translateY(-10%); }
+    to { transform: translateY(120%); }
+  }
+  .hero-inner { position: relative; z-index: 1; }
+  h1.title {
+    font-size: clamp(2.1rem, 5vw, 3.2rem);
+    line-height: 1.25;
+    font-weight: 700;
+    margin: 0 0 20px;
+    letter-spacing: -0.01em;
+    opacity: 0;
+    animation: heroUp .8s ease .1s forwards;
+  }
+  h1.title em { font-style: normal; color: var(--wine); }
+  .hero-sub {
+    font-size: 15px; color: var(--text-dim); max-width: 60ch;
+    margin: 0 0 28px; opacity: 0; animation: heroUp .8s ease .24s forwards;
+  }
+  .hero-cta {
+    display: flex; gap: 16px; flex-wrap: wrap; align-items: center;
+    opacity: 0;
+    animation: heroUp .8s ease .4s forwards;
+  }
+  @keyframes heroUp {
+    from { opacity: 0; transform: translateY(14px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .btn-primary {
+    display: inline-flex; align-items: center; justify-content: center; text-decoration: none;
+    background: var(--wine); color: #ffffff;
+    padding: 12px 24px; font-weight: 500; font-size: 14.5px;
+    border: 1px solid var(--wine);
+    border-radius: 6px; letter-spacing: .02em;
+    transition: transform .2s ease, filter .2s ease;
+    box-shadow: 0 4px 12px rgba(122,50,48,0.25);
+  }
+  .btn-primary:hover, .btn-primary:focus-visible { transform: translateY(-2px); filter: brightness(1.1); }
+  .btn-ghost {
+    display: inline-flex; align-items: center; justify-content: center; text-decoration: none;
+    color: var(--wine); font-size: 14.5px; font-weight: 500; letter-spacing: .02em;
+    border: 1px solid var(--wine);
+    border-radius: 6px;
+    padding: 12px 24px;
+    background: transparent;
+    transition: transform .2s ease, background-color .2s ease;
+  }
+  .btn-ghost:hover, .btn-ghost:focus-visible { transform: translateY(-2px); background: var(--wine-light); }
+
+  section { padding: 64px 0; border-bottom: 1px solid var(--hairline); }
+  section:last-of-type { border-bottom: none; }
+  .section-head { margin-bottom: 36px; max-width: 90ch; }
+  #novel .section-head { max-width: none; }
+  #novel .novel-summary p { max-width: 95ch; }
+  .section-kicker { color: var(--wine); font-size: 12.5px; letter-spacing: 0.1em; font-weight: 600; margin-bottom: 8px; }
+  .section-head h2 { font-size: clamp(1.6rem, 3.2vw, 2.2rem); margin: 0 0 12px; }
+  .section-head p { color: var(--text-dim); margin: 0; font-size: 15px; }
+
+  .novel-summary {
+    padding: 4px 0 4px 16px;
+    margin-bottom: 24px;
+    line-height: 1.8;
+    border-left: 3px solid var(--wine);
+  }
+  .novel-tag { display: inline-block; font-size: 12px; color: var(--wine); border: 1px solid var(--wine); padding: 2px 8px; border-radius: 99px; margin-bottom: 12px; font-weight: 600; }
+
+  /* 세계관 리스트 - 줄 구분형 + 포인트 강조 */
+  .scale-list { list-style: none; margin: 8px 0 0; padding: 0; display: grid; gap: 0; }
+  .scale-list li {
+    position: relative;
+    padding: 22px 2px 22px 62px;
+    border-top: 1px solid var(--hairline);
+  }
+  .scale-list li:first-child { border-top: none; }
+  .scale-list .num {
+    position: absolute; left: 2px; top: 20px;
+    font-family: 'Noto Serif KR', serif; font-size: 28px; font-weight: 700;
+    color: var(--wine); opacity: .28; line-height: 1;
+  }
+  .scale-list .label {
+    display: inline-block; font-size: 12px; font-weight: 600; letter-spacing: .06em;
+    color: var(--wine); background: var(--wine-light);
+    padding: 3px 10px; border-radius: 99px; margin-bottom: 10px;
+  }
+  .scale-list h3 { margin: 0 0 6px; font-size: 17px; }
+  .scale-list h3 .point { color: var(--wine); }
+  .scale-list p { margin: 0; font-size: 14px; color: var(--text-dim); }
+  .scale-list p strong { color: var(--text); font-weight: 600; }
+  .scale-list .stat { color: var(--wine); font-weight: 700; }
+  .hierarchy { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 10px 0 2px; }
+  .hierarchy span { font-size: 15px; font-weight: 500; color: var(--text); }
+  .hierarchy .sep { color: var(--ice-soft); font-weight: 400; }
+  .hierarchy .top { color: var(--wine); font-weight: 700; }
+  .currency-row { display: flex; flex-wrap: wrap; gap: 8px 20px; margin-top: 10px; font-size: 13px; color: var(--text-dim); }
+  .currency-row b { color: var(--wine); font-weight: 700; margin-right: 4px; }
+  .magic-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+  .magic-tags span {
+    font-size: 12.5px; font-weight: 500; color: var(--wine);
+    background: var(--wine-light); padding: 4px 12px; border-radius: 99px;
+  }
+  .element-tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0 4px; }
+  .element-tags span {
+    display: inline-flex; align-items: center; gap: 7px;
+    font-size: 12.5px; font-weight: 500; color: var(--text);
+    border: 1px solid var(--hairline); padding: 4px 12px 4px 9px; border-radius: 99px;
+  }
+  .element-tags i { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+
+  /* 타임라인 - 선형 */
+  .flat-timeline {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+    margin-top: 8px;
+  }
+  .flat-timeline-col {
+    border-left: 2px solid var(--wine);
+    padding: 4px 0 4px 20px;
+  }
+  .flat-timeline-col h4 { margin: 0 0 12px; font-size: 16px; }
+  .flat-timeline-col ul { margin: 0; padding-left: 18px; color: var(--text-dim); font-size: 14px; display: grid; gap: 8px; }
+  .flat-timeline-col li { margin-bottom: 0; }
+  .flat-timeline-col li strong { color: var(--text); font-weight: 500; }
+
+  .estate-list { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+  @media (max-width:700px) { .estate-list { grid-template-columns: 1fr; } }
+  .estate-sec { padding: 0; }
+  .estate-sec h3 { font-size: 20px; margin: 0 0 4px; color: var(--wine); }
+  .estate-sec .tag {
+    display: inline-block; font-size: 12px; font-weight: 600; color: var(--wine);
+    background: var(--wine-light); padding: 3px 10px; border-radius: 99px; margin-bottom: 8px;
+  }
+  .estate-item { padding: 14px 0; border-top: 1px solid var(--hairline); }
+  .estate-item:first-of-type { border-top: none; }
+  .estate-item h4 { margin: 0 0 4px; font-size: 15px; font-weight: 600; }
+  .estate-item h4::before { content: "▪ "; color: var(--wine); }
+  .estate-item p { margin: 0; font-size: 13.5px; color: var(--text-dim); }
+
+  /* Character Layout */
+  .char-stack { display: flex; flex-direction: column; gap: 48px; margin-top: 24px; }
+  .char-unit { max-width: 720px; margin: 0 auto; width: 100%; }
+  
+  .char-img-frame {
+    width: 100%;
+    height: 360px;
+    border-radius: var(--radius);
+    overflow: hidden;
+    position: relative;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    margin-bottom: 20px;
+  }
+
+  /* 이미지 슬롯: src를 비워두면 안내 문구가 보이고, 주소를 넣으면 자동으로 사진이 덮습니다 */
+  .photo-frame {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(150deg, var(--bg-card), var(--bg-raise));
+    overflow: hidden;
+  }
+  .photo-frame::before {
+    content: attr(data-label);
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    text-align: center;
+    padding: 0 24px;
+    font-size: 12.5px;
+    letter-spacing: .04em;
+    color: var(--text-dim);
+    opacity: .55;
+    z-index: 1;
+  }
+  .photo-frame img {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+  }
+  .photo-frame img:not([src]),
+  .photo-frame img[src=""] { visibility: hidden; }
+
+  .slider-container { position: relative; width: 100%; height: 100%; touch-action: pan-y; }
+  .slide-track {
+    display: flex; width: 400%; height: 100%;
+    transition: transform 0.5s cubic-bezier(.22,.61,.36,1);
+    cursor: grab;
+  }
+  #ruberusTrack { width: 300%; }
+  #ruberusTrack .slide-item { width: 33.3333%; }
+  .slide-track.dragging { transition: none; cursor: grabbing; }
+  .slide-item { width: 25%; height: 100%; position: relative; flex-shrink: 0; }
+  .slide-item .photo-frame { user-select: none; }
+  .slide-item .photo-frame img { -webkit-user-drag: none; pointer-events: none; }
+
+  /* 좌우 탭 영역: 이미지 안쪽 화살표 (투명 흰색) */
+  .slide-tap {
+    position: absolute; top: 0; bottom: 0; width: 30%;
+    z-index: 3; cursor: pointer; background: transparent; border: none;
+    display: flex; align-items: center; padding: 0 14px;
+  }
+  .slide-tap.prev { left: 0; justify-content: flex-start; }
+  .slide-tap.next { right: 0; justify-content: flex-end; }
+  .slide-arrow {
+    display: block;
+    font-size: 34px; line-height: 1; font-weight: 300;
+    color: rgba(255,255,255,0.75);
+    text-shadow: 0 1px 8px rgba(0,0,0,0.55);
+    user-select: none; pointer-events: none;
+    transition: color .2s ease;
+  }
+  .slide-tap:hover .slide-arrow { color: rgba(255,255,255,1); }
+
+  /* 진행 표시 점: 버튼이 아니라 얇은 진행 인디케이터 느낌 */
+  .slider-controls { display: flex; justify-content: center; padding: 14px 0 4px; }
+  .slider-dots { display: flex; gap: 6px; }
+  .dot-btn {
+    width: 22px; height: 3px; border-radius: 2px;
+    border: none; background: var(--border);
+    cursor: pointer; padding: 0;
+    transition: background-color .3s ease, transform .3s ease;
+  }
+  .dot-btn.active { background: var(--wine); transform: scaleY(1.6); }
+
+  .char-details { padding: 4px 0; }
+  .char-role { font-size: 12.5px; color: var(--wine); font-weight: 600; letter-spacing: 0.05em; margin-bottom: 4px; }
+  .char-name { font-size: 26px; margin: 0 0 6px; }
+  .char-meta { font-size: 13px; color: var(--text-dim); margin-bottom: 16px; border-bottom: 1px solid var(--hairline); padding-bottom: 10px; }
+  .char-desc { font-size: 14.5px; color: var(--text-dim); line-height: 1.7; margin-bottom: 12px; transition: opacity .3s ease, transform .3s ease; }
+  .char-desc.swap { opacity: 0; transform: translateY(6px); }
+  .char-name, .char-meta { transition: opacity .3s ease, transform .3s ease; }
+  .char-name.swap, .char-meta.swap { opacity: 0; transform: translateY(6px); }
+
+  /* 스크롤 등장 애니메이션 */
+  .reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s ease, transform .7s ease; }
+  .reveal.in-view { opacity: 1; transform: translateY(0); }
+  .char-stack .char-unit.reveal { transition-delay: 0s; }
+  .event-flat-list .event-flat-item.reveal { transition-delay: 0s; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+    * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+  }
+
+  /* 사건 리스트 - 줄 구분형 */
+  .event-flat-list { display: flex; flex-direction: column; gap: 0; margin-top: 12px; }
+  /* 성장기별 아코디언 */
+  .event-groups { display: flex; flex-direction: column; margin-top: 12px; border-top: 1px solid var(--hairline); }
+  .event-group { border-bottom: 1px solid var(--hairline); }
+  .event-group summary {
+    display: flex; align-items: center; gap: 12px;
+    padding: 18px 2px; cursor: pointer; list-style: none;
+  }
+  .event-group summary::-webkit-details-marker { display: none; }
+  .event-group summary::marker { content: ""; }
+  .event-group summary::after {
+    content: "›"; margin-left: auto;
+    color: var(--wine); font-size: 22px; line-height: 1;
+    transition: transform .25s ease;
+  }
+  .event-group[open] summary::after { transform: rotate(90deg); }
+  .group-name { font-family: 'Noto Serif KR', serif; font-size: 18px; font-weight: 600; }
+  .group-range {
+    font-size: 12px; font-weight: 600; color: var(--wine);
+    background: var(--wine-light); padding: 3px 10px; border-radius: 99px;
+  }
+  .group-body { padding: 2px 2px 10px; }
+  .event-flat-item {
+    padding: 22px 2px;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .event-flat-item:last-child { border-bottom: none; }
+  .event-flat-header { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
+  .event-age-badge { font-size: 12px; background: var(--wine-light); color: var(--wine); padding: 2px 10px; border-radius: 99px; font-weight: 600; }
+  .event-title { font-size: 17px; font-weight: 600; margin: 0; }
+  .event-desc { font-size: 14px; color: var(--text-dim); margin: 0 0 12px; line-height: 1.6; }
+  .orig-tragedy-box {
+    padding: 12px 16px;
+    border-left: 3px solid var(--wine);
+    background: var(--bg-card);
+    font-size: 13.5px;
+    color: var(--text-dim);
+  }
+  .orig-tragedy-box strong { color: var(--wine); display: block; margin-bottom: 2px; font-size: 12.5px; }
+
+  .notice-simple { padding: 16px 0; font-size: 14px; color: var(--text-dim); }
+  .notice-simple ul { padding-left: 20px; margin: 8px 0 0; }
+  .notice-simple li { margin-bottom: 6px; }
+
+  /* 웹툰 미리보기 - 섹션 배경형 */
+  #preview { position: relative; overflow: hidden; }
+  .preview-bg {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover; object-position: right center;
+  }
+  .preview-bg-fade {
+    position: absolute; inset: 0;
+    background: linear-gradient(90deg, var(--bg) 32%, rgba(0,0,0,0) 72%);
+  }
+  .preview-inner { position: relative; z-index: 2; }
+  .preview-inner .section-head { margin-bottom: 24px; }
+  .preview-btn {
+    display: inline-block; font-size: 15px; font-weight: 700; letter-spacing: .06em; text-decoration: none;
+    color: var(--wine); border: 1px solid var(--wine);
+    border-radius: 99px; padding: 10px 32px;
+    transition: background-color .2s ease, color .2s ease;
+  }
+  .preview-btn:hover { background: var(--wine); color: #ffffff; }
+  @media (max-width:700px) {
+    .preview-bg-fade { background: linear-gradient(90deg, var(--bg) 55%, rgba(0,0,0,0) 95%); }
+  }
+
+  footer { padding: 40px 0; font-size: 13px; color: var(--text-dim); border-top: 1px solid var(--hairline); }
+</style>
+</head>
+<body>
+<div class="frame">
+
+<nav class="top">
+  <div class="wrap">
+    <div class="brand">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+        <path d="M12 2L15 9L22 12L15 15L12 22L9 15L2 12L9 9L12 2Z"/>
+      </svg>
+      황녀의 밤은 차갑다
+    </div>
+    
+    <div class="nav-right">
+      <button class="theme-toggle" id="themeToggle" title="테마 전환">
+        <span id="themeIcon">🌙</span> <span id="themeText">다크</span>
+      </button>
+      <button class="navtoggle" id="navToggle" aria-expanded="false" aria-controls="navlinks">메뉴</button>
+      <div class="navlinks" id="navlinks">
+        <a href="#novel">원작설정</a>
+        <a href="#world">세계관</a>
+        <a href="#estate">벨몬가</a>
+        <a href="#characters">인물목록</a>
+        <a href="#events">원작 잔혹사</a>
+        <a href="#preview">만나러가기</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="frost-field" aria-hidden="true" id="frostField"></div>
+  <div class="wrap hero-inner">
+    <h1 class="title">제가 악역 서브남주의<br><em>유모로 빙의했다고요?</em></h1>
+    <p class="hero-sub">그런데 그 악역이... 원숭이란게 사실인가요?</p>
+  </div>
+</header>
+
+<section id="novel">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-kicker">ORIGINAL STORY</div>
+      <h2>소설 《황녀의 밤은 차갑다》 속 원래의 비극</h2>
+      <p>원작에서 루베루스는 사랑받지 못한 채 흑화하여 제국을 현혹하다 처단당하는 최종 악역 서브 남주였다.</p>
+    </div>
+
+    <div class="novel-summary reveal">
+      <span class="novel-tag">원작 메인 서사</span>
+      <h3 style="margin:0 0 10px; font-size:22px;">"친모의 죽음, 유모의 학대, 그리고 10세의 첫 참살"</h3>
+      <p style="color:var(--text-dim); font-size:14.5px; margin:0;">
+        원작 속 루베루스는 낳다 죽은 친모와 가주의 냉대 속에서 악독한 원작 유모에게 학대받으며 감정을 잃어버렸다.
+        10세가 되던 날, 마력이 폭주하며 환영으로 만든 환각 속에 유모를 빠뜨려 가장 먼저 참살했고,
+        이후 타인을 속이고 현혹하는 환술 마력으로 흑화하여 황녀(여주)에게 집착하다 남주에게 처단당했다.
+      </p>
+      <a class="btn-primary" href="#events" style="margin-top:18px;">원작 사건보기</a>
+    </div>
+
+  </div>
+</section>
+
+<section id="world">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-kicker">WORLD & SYSTEM</div>
+      <h2>대륙 에테리아와 마력 체계</h2>
+      <p>엄격한 신분제와 무역로의 권력, 그리고 타고난 속성이 지배하는 거대한 제국.</p>
+    </div>
+    <ul class="scale-list">
+      <li>
+        <span class="num">01</span>
+        <span class="label">대륙 & 제국</span>
+        <div>
+          <h3>대륙 에테리아 / <span class="point">헤스테리아 제국</span></h3>
+          <p>수많은 연방 국가가 상존하는 거대 대륙.<br>헤스테리아 제국은 <strong>신분제와 혈통주의</strong>가 엄격하며, 황실과 고위 공작가가 권력을 분점한다.</p>
+          <div class="hierarchy">
+            <span class="top">황족</span><span class="sep">›</span>
+            <span>공작</span><span class="sep">›</span>
+            <span>후작</span><span class="sep">›</span>
+            <span>백작</span><span class="sep">›</span>
+            <span>자작</span><span class="sep">›</span>
+            <span>평민</span><span class="sep">›</span>
+            <span>노예</span>
+          </div>
+        </div>
+      </li>
+      <li>
+        <span class="num">02</span>
+        <span class="label">경제 & 화폐</span>
+        <div>
+          <h3>화폐 체계</h3>
+          <p>기준은 <strong>1금화 = 10은화 = 100동화</strong>.<br>벨몬가는 <span class="stat">독점 관세권</span>으로 황실조차 터치하지 못하는 막강한 재정력을 가졌다.</p>
+          <div class="currency-row">
+            <span><b>1동화</b>빵</span>
+            <span><b>5~10동화</b>하루 식비</span>
+            <span><b>30동화</b>고기스튜</span>
+            <span><b>150~300동화</b>평민 한 달 생활비</span>
+          </div>
+        </div>
+      </li>
+      <li>
+        <span class="num">03</span>
+        <span class="label">마력 속성</span>
+        <div>
+          <h3>선천적 각성 체계</h3>
+          <p>평균 <strong>3세 전후</strong>에 발현되며, <span class="stat">인류의 20% 이내</span>만 마력을 갖는다.<br>기본 5원소 외에 특수 혈통 마력이 존재한다.</p>
+          <div class="element-tags">
+            <span><i style="background:#c0392b"></i>불</span>
+            <span><i style="background:#2f6e8f"></i>물</span>
+            <span><i style="background:#7fa9bc"></i>바람</span>
+            <span><i style="background:#b5762f"></i>번개</span>
+            <span><i style="background:#8fc4e3"></i>얼음</span>
+          </div>
+          <p>루베루스가 보유한 <strong>정신·환술(환각/인지교란)</strong>, 가주 카엘른의 <strong>공간·법칙(중력제어)</strong>, 데미안의 <strong>마도 검술</strong> 등이 존재한다.</p>
+          <div class="magic-tags">
+            <span>정신·환술 — 루베루스</span>
+            <span>공간·법칙 — 카엘른</span>
+            <span>마도 검술 — 데미안</span>
+            <span>언령 — 이안(황실)</span>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section id="estate">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-kicker">BELMON ESTATE</div>
+      <h2>BELMON 벨몬공작가</h2>
+      <p>변경 무역로를 장악한 명문가.</p>
+    </div>
+    <div class="estate-list">
+      <div class="estate-sec reveal">
+        <h3>본관 (Main Hall)</h3>
+        <span class="tag">데미안 & 가주 중심 · 정치 & 성장</span>
+        <div class="estate-item">
+          <h4>가주 집무실</h4>
+          <p>카엘른 공작이 무역로와 가문 존속을 위해 무게감 있게 결정을 내리는 곳으로, 중력 마력의 중압감이 감돈다.</p>
+        </div>
+        <div class="estate-item">
+          <h4>데미안의 침실 & 연회장</h4>
+          <p>적장자 데미안과 그의 후견 세력이 정통성을 단단히 다지는 연회와 정치 공작이 벌어지는 무대다.</p>
+        </div>
+        <div class="estate-item">
+          <h4>변경 무역 관문 & 저잣거리</h4>
+          <p>벨몬가의 막강한 부가 창출되는 관문으로, 은빛 여우 길드와 주점 등 하층민 정보가 오가는 거점이다.</p>
+        </div>
+      </div>
+      <div class="estate-sec reveal">
+        <h3>별관 (Annex)</h3>
+        <span class="tag">루베루스 & 유모 중심</span>
+        <div class="estate-item">
+          <h4>루베루스의 침실 & 지붕·난간</h4>
+          <p>삐지거나 화가 나면 루베루스가 기어 올라가는 아지트이며, 사고를 칠 때마다 별관 사용인들이 패닉에 빠진다.</p>
+        </div>
+        <div class="estate-item">
+          <h4>주방 및 식당</h4>
+          <p>유모와의 간식 밀당이 벌어지는 장소로, 시트콤 같은 소란과 온기가 피어나는 공간이다.</p>
+        </div>
+        <div class="estate-item">
+          <h4>지하 수로</h4>
+          <p>별관과 저택 외부로 몰래 연결된 비밀 통로로, 소년기 루베루스의 몰래 탈출로로 활용된다.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="characters">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-kicker">MAIN CHARACTERS</div>
+      <h2>주요 인물 정보</h2>
+    </div>
+
+    <div class="char-stack">
+      
+      <!-- 1. 루베루스 (이미지 슬라이드 + 내용) -->
+      <div class="char-unit reveal">
+        <div class="char-role">3공자 · 서자 · 최종 악역(원작)</div>
+        <h3 class="char-name" style="margin-bottom:14px;">루베루스 벨몬 (Ruberus Belmon)</h3>
+        
+        <!-- 이미지 슬라이더 영역 -->
+        <div class="char-img-frame">
+          <div class="slider-container">
+            <div class="slide-track" id="ruberusTrack">
+              
+              <!-- Slide 1: 어린이 (6~12세) -->
+              <div class="slide-item">
+                <div class="photo-frame" data-label="6~12세 · 어린이 루베루스 이미지">
+                  <img src="https://pub-c81b5826b0504452820c048b4da6a5da.r2.dev/Rub/1.webp" alt="6~12세 어린이 루베루스">
+                </div>
+              </div>
+
+              <!-- Slide 2: 소년 (13~19세) -->
+              <div class="slide-item">
+                <div class="photo-frame" data-label="13~19세 · 소년 루베루스 이미지">
+                  <img src="https://pub-c81b5826b0504452820c048b4da6a5da.r2.dev/Ruc/1.webp" alt="13~19세 소년 루베루스">
+                </div>
+              </div>
+
+              <!-- Slide 3: 성인 (20세~) -->
+              <div class="slide-item">
+                <div class="photo-frame" data-label="20세~ · 성인 루베루스 이미지">
+                  <img src="https://pub-c81b5826b0504452820c048b4da6a5da.r2.dev/Rua/1.webp" alt="20세 이후 성인 루베루스">
+                </div>
+              </div>
+
+            </div>
+            <!-- 좌우 탭(스와이프/클릭)으로 이전·다음 슬라이드 이동 -->
+            <div class="slide-tap prev" id="ruberusTapPrev" aria-label="이전 단계"><span class="slide-arrow">‹</span></div>
+            <div class="slide-tap next" id="ruberusTapNext" aria-label="다음 단계"><span class="slide-arrow">›</span></div>
+          </div>
+        </div>
+
+        <!-- 진행 인디케이터: 클릭으로 바로 이동 가능하지만 버튼이 아닌 얇은 바 형태 -->
+        <div class="slider-controls">
+          <div class="slider-dots" id="ruberusDots">
+            <button class="dot-btn active" data-index="0" aria-label="6~12세"></button>
+            <button class="dot-btn" data-index="1" aria-label="13~19세"></button>
+            <button class="dot-btn" data-index="2" aria-label="20세~"></button>
+          </div>
+        </div>
+
+        <!-- 내용 영역 -->
+        <div class="char-details">
+          <div class="char-meta">ENFP 7w8 · 적발 · 적안 · 환술/환영 마력</div>
+          <div class="char-desc" id="ruberusDesc">
+            날카롭고 또렷한 이목구비. 삐지면 난간 위로, 애착이 생기면 손에 얼굴을 부비는 어리광꾸러기.
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. 데미안 (이미지 -> 내용) -->
+      <div class="char-unit reveal">
+        <div class="char-img-frame">
+          <div class="photo-frame" data-label="데미안 (Demian) 이미지">
+            <img src="https://pub-c81b5826b0504452820c048b4da6a5da.r2.dev/De/1.webp" alt="데미안">
+          </div>
+        </div>
+        <div class="char-details">
+          <div class="char-role">적장자 · 공식 후계자</div>
+          <h3 class="char-name">데미안 벨몬 (Demian Belmon)</h3>
+          <div class="char-meta">ENTJ 3w2 · 짙은 금발 · 회색 눈 · 마도 검술</div>
+          <div class="char-desc">
+            훤칠하고 반듯한 외형. 욕설 대신 우회적 비꼼을 사용하며 턱을 살짝 드는 습관이 있다. 
+            루베루스보다 8살 연상으로, 가문의 유일무이한 후계자가 목표이며 루베루스의 성장을 지속적으로 견제한다.
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. 카엘른 (이미지 -> 내용) -->
+      <div class="char-unit reveal">
+        <div class="char-img-frame">
+          <div class="photo-frame" data-label="카엘른 공작 (Caeln) 이미지">
+            <img src="https://pub-c81b5826b0504452820c048b4da6a5da.r2.dev/Ca/1.webp" alt="카엘른 공작">
+          </div>
+        </div>
+        <div class="char-details">
+          <div class="char-role">벨몬 공작 · 가주</div>
+          <h3 class="char-name">카엘른 벨몬 (Caeln Belmon)</h3>
+          <div class="char-meta">ISTJ 1w9 · 은발 섞인 금발 · 적안 · 공간·법칙(중력제어)</div>
+          <div class="char-desc">
+            43세. 다부진 체격. 감정보다 가문의 존속과 무역로 안정을 최우선시한다. 
+            루베루스를 방치하는 것을 '공정'이라 정당화하지만 내심 완벽히 버리지는 못함. 중요한 결정을 내리기 전 손가락으로 탁자를 두드리는 습관이 있다.
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. 원작 NPC 세력 (이미지 슬라이드 + 내용) -->
+      <div class="char-unit reveal">
+        <div class="char-img-frame">
+          <div class="slider-container">
+            <div class="slide-track" id="npcTrack">
+
+              <div class="slide-item">
+                <div class="photo-frame" data-label="에블린 헤스테리아 이미지">
+                  <img src="https://pub-c81b5826b0504452820c048b4da6a5da.r2.dev/Ev/1.webp" alt="에블린 황녀">
+                </div>
+              </div>
+
+              <div class="slide-item">
+                <div class="photo-frame" data-label="이안 알렉시스 헤스테리아 이미지">
+                  <img src="https://pub-c81b5826b0504452820c048b4da6a5da.r2.dev/In/1.webp" alt="황태자 이안">
+                </div>
+              </div>
+
+              <div class="slide-item">
+                <div class="photo-frame" data-label="길드장 케이언 이미지">
+                  <img src="https://pub-c81b5826b0504452820c048b4da6a5da.r2.dev/Ka/1.webp" alt="길드장 케이언">
+                </div>
+              </div>
+
+              <div class="slide-item">
+                <div class="photo-frame" data-label="바란 (Baran) 이미지">
+                  <img src="https://pub-c81b5826b0504452820c048b4da6a5da.r2.dev/Ba/1.webp" alt="바란">
+                </div>
+              </div>
+
+            </div>
+            <div class="slide-tap prev" id="npcTapPrev" aria-label="이전 인물"><span class="slide-arrow">‹</span></div>
+            <div class="slide-tap next" id="npcTapNext" aria-label="다음 인물"><span class="slide-arrow">›</span></div>
+          </div>
+        </div>
+
+        <div class="slider-controls">
+          <div class="slider-dots" id="npcDots">
+            <button class="dot-btn active" data-index="0" aria-label="에블린 황녀"></button>
+            <button class="dot-btn" data-index="1" aria-label="황태자 이안"></button>
+            <button class="dot-btn" data-index="2" aria-label="길드장 케이언"></button>
+            <button class="dot-btn" data-index="3" aria-label="바란"></button>
+          </div>
+        </div>
+
+        <div class="char-details">
+          <div class="char-role">원작 주요 인물 및 상단</div>
+          <h3 class="char-name" id="npcName">에블린 헤스테리아 (Evelyn Hesteria)</h3>
+          <div class="char-meta" id="npcMeta">막내 황녀 · ENFP 7w6</div>
+          <div class="char-desc" id="npcDesc">루베루스와 동갑인 제국의 막내 황녀. 환술을 예쁜 마법이라 감탄하며 함께 사고 치는 악동 콤비.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="events">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-kicker">ORIGINAL TRAGEDY</div>
+      <h2>연령별 사건과 원작 잔혹사</h2>
+      <p>원작에서 루베루스가 겪었던 참혹한 비극과 각 연령별 핵심 사건들.</p>
+    </div>
+
+    <div class="event-groups">
+
+      <details class="event-group" open>
+        <summary>
+          <span class="group-name">어린이</span>
+          <span class="group-range">6~11세</span>
+        </summary>
+        <div class="group-body">
+      
+      <!-- 6세 -->
+      <div class="event-flat-item reveal">
+        <div class="event-flat-header">
+          <span class="event-age-badge">6세</span>
+          <h3 class="event-title">별관 지붕 난간 소란 사건</h3>
+        </div>
+        <p class="event-desc">
+          집안일이나 불만에 저항하기 위해 루베루스가 별관 지붕 및 위험한 난간에 올라가 주변 사람들을 패닉에 빠뜨린 사건.
+        </p>
+        <div class="orig-tragedy-box">
+          <strong>💀 원작 잔혹사</strong>
+          학대와 폭력을 피해 추운 야간 별관 지붕으로의 피난, 감금·유폐. 타인에 대한 증오와 마력 폭주 씨앗의 발현.
+        </div>
+      </div>
+
+      <!-- 8세 -->
+      <div class="event-flat-item reveal">
+        <div class="event-flat-header">
+          <span class="event-age-badge">8세</span>
+          <h3 class="event-title">외부 가정교사의 고압적 학대와 반항</h3>
+        </div>
+        <p class="event-desc">
+          가주 카엘른의 별관 방문 시 찾아온 외부 가정교사의 서자 무시와 고압적인 대면. 루베루스의 반항.
+        </p>
+        <div class="orig-tragedy-box">
+          <strong>💀 원작 잔혹사</strong>
+          반항에 대한 가혹한 매질과 어두운 독방 감금. 세상에 대한 불신과 폭력성의 완벽한 각인.
+        </div>
+      </div>
+
+      <!-- 10~11세 각성 -->
+      <div class="event-flat-item reveal">
+        <div class="event-flat-header">
+          <span class="event-age-badge">10~11세</span>
+          <h3 class="event-title">11살 생일 마력 각성 참극</h3>
+        </div>
+        <p class="event-desc">
+          필연적으로 다가온 루베루스의 선천적 마력 각성의 날. 정신·환술(환각/인지교란) 속성의 거대한 마력의 각성.
+        </p>
+        <div class="orig-tragedy-box">
+          <strong>💀 원작 잔혹사</strong>
+          누적된 학대로 인한 분노 폭주. 환영의 환각 속 원작 유모 참살, 본격적인 흑화의 시작.
+        </div>
+      </div>
+        </div>
+      </details>
+
+      <details class="event-group">
+        <summary>
+          <span class="group-name">소년</span>
+          <span class="group-range">13~19세</span>
+        </summary>
+        <div class="group-body">
+
+      <!-- 13세 -->
+      <div class="event-flat-item reveal">
+        <div class="event-flat-header">
+          <span class="event-age-badge">13세</span>
+          <h3 class="event-title">본관 데미안 세력의 이간질 공작</h3>
+        </div>
+        <p class="event-desc">
+          적장자 데미안 세력의 루베루스 고립 공작. 가문 내 완전한 고립을 위한 유폐와 음모.
+        </p>
+        <div class="orig-tragedy-box">
+          <strong>💀 원작 잔혹사</strong>
+          창고 감금 중 가문을 향한 증오 증폭과 감정의 완전한 폐쇄. 제국을 현혹할 최종 악역 서브 남주 확정.
+        </div>
+      </div>
+
+      <!-- 14세 -->
+      <div class="event-flat-item reveal">
+        <div class="event-flat-header">
+          <span class="event-age-badge">14세</span>
+          <h3 class="event-title">지하 수로 탈출 소동</h3>
+        </div>
+        <p class="event-desc">
+          별관 지하 수로를 통한 첫 무단 외출. 저잣거리에서의 짧은 자유와 귀환 후의 대소동.
+        </p>
+        <div class="orig-tragedy-box">
+          <strong>💀 원작 잔혹사</strong>
+          외출 발각 후 지하 수로 봉쇄와 혹독한 체벌. 바깥 세계에 대한 동경과 증오의 동시 각인.
+        </div>
+      </div>
+
+      <!-- 16세 -->
+      <div class="event-flat-item reveal">
+        <div class="event-flat-header">
+          <span class="event-age-badge">16세</span>
+          <h3 class="event-title">본관 연회 데뷔와 견제</h3>
+        </div>
+        <p class="event-desc">
+          첫 본관 연회 데뷔와 뜻밖의 주목. 데미안 세력의 노골적인 견제.
+        </p>
+        <div class="orig-tragedy-box">
+          <strong>💀 원작 잔혹사</strong>
+          연회에서의 공개적인 모욕과 고립. 가문 전체에 대한 복수심의 확정.
+        </div>
+      </div>
+
+      <!-- 17~19세 -->
+      <div class="event-flat-item reveal">
+        <div class="event-flat-header">
+          <span class="event-age-badge">17~19세</span>
+          <h3 class="event-title">은빛 여우 길드 접촉 및 황실 연회 집착</h3>
+        </div>
+        <p class="event-desc">
+          청소년기 루베루스의 무역로 최대 용병단 및 황실 연회 세력과의 첫 접촉.
+        </p>
+        <div class="orig-tragedy-box">
+          <strong>💀 원작 잔혹사</strong>
+          하층민 용병대에 대한 잔혹한 공포 지배와 사설 조직화. 황녀(에블린)에 대한 기이하고 병리적인 얀데레적 집착.
+        </div>
+      </div>
+        </div>
+      </details>
+
+      <details class="event-group">
+        <summary>
+          <span class="group-name">성인</span>
+          <span class="group-range">20세~</span>
+        </summary>
+        <div class="group-body">
+
+      <!-- 20세 성인 -->
+      <div class="event-flat-item reveal">
+        <div class="event-flat-header">
+          <span class="event-age-badge">20세</span>
+          <h3 class="event-title">후계자 경합 및 가문 전복 비극</h3>
+        </div>
+        <p class="event-desc">
+          후계 구도 막바지, 적장자 데미안과의 정면 승부.
+        </p>
+        <div class="orig-tragedy-box">
+          <strong>💀 원작 잔혹사</strong>
+          데미안의 정신을 피폐하게 만들어 가문 전복을 도모하다가 원작 남주(황태자 이안)에 의해 처단당하는 단죄의 결말.
+        </div>
+      </div>
+        </div>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+<section id="preview">
+  <img class="preview-bg" src="https://pub-c81b5826b0504452820c048b4da6a5da.r2.dev/Rub/1.webp" alt="" aria-hidden="true">
+  <div class="preview-bg-fade" aria-hidden="true"></div>
+  <div class="wrap preview-inner">
+    <div class="section-head">
+      <div class="section-kicker">MEET RUBERUS</div>
+      <h2>루베루스 만나러가기</h2>
+    </div>
+    <a class="preview-btn" href="#" target="_blank" rel="noopener">CLICK</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="fine">소설 《황녀의 밤은 차갑다》 스토리챗 쇼케이스</div>
+    <div class="fine">벨몬 공작가 연대기 · Fan Created Page</div>
+  </div>
+</footer>
+
+</div>
+
+<script>
+  // Theme Toggle logic
+  const themeToggle = document.getElementById('themeToggle');
+  const themeIcon = document.getElementById('themeIcon');
+  const themeText = document.getElementById('themeText');
+  let currentTheme = localStorage.getItem('theme') || 'light';
+
+  function applyTheme(theme) {
+    if (theme === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      themeIcon.textContent = '☀️';
+      themeText.textContent = '라이트';
+    } else {
+      document.documentElement.setAttribute('data-theme', 'light');
+      themeIcon.textContent = '🌙';
+      themeText.textContent = '다크';
+    }
+  }
+
+  applyTheme(currentTheme);
+
+  themeToggle.addEventListener('click', () => {
+    currentTheme = currentTheme === 'light' ? 'dark' : 'light';
+    localStorage.setItem('theme', currentTheme);
+    applyTheme(currentTheme);
+  });
+
+  // Mobile Nav Toggle
+  const navToggle = document.getElementById('navToggle');
+  const navlinks = document.getElementById('navlinks');
+  navToggle.addEventListener('click', () => {
+    const open = navlinks.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  navlinks.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      navlinks.classList.remove('open');
+      navToggle.setAttribute('aria-expanded','false');
+    });
+  });
+
+  // Ruberus Character Image Slider Logic
+  const ruberusData = [
+    {
+      desc: "별관 지붕과 난간을 타며 유모의 이름을 외치는 사고뭉치 악동."
+    },
+    {
+      desc: "유모의 거취 소문에 끈질기게 추적하는 애착 소년기. 자라선 서늘한 남자의 기류."
+    },
+    {
+      desc: "인지교란 환술로 데미안의 마도 검술을 무력화하는 완숙한 실력자."
+    }
+  ];
+
+  const SLIDE_COUNT = ruberusData.length;
+  let currentSlide = 0;
+  const sliderContainer = document.querySelector('#ruberusTrack').closest('.slider-container');
+  const track = document.getElementById('ruberusTrack');
+  const dotBtns = document.querySelectorAll('#ruberusDots .dot-btn');
+  const tapPrev = document.getElementById('ruberusTapPrev');
+  const tapNext = document.getElementById('ruberusTapNext');
+  const descEl = document.getElementById('ruberusDesc');
+
+  function renderSlideText(index) {
+    if (!ruberusData[index]) return;
+    descEl.classList.add('swap');
+    window.setTimeout(() => {
+      descEl.textContent = ruberusData[index].desc;
+      descEl.classList.remove('swap');
+    }, 180);
+  }
+
+  function goToSlide(index, animate = true) {
+    currentSlide = ((index % SLIDE_COUNT) + SLIDE_COUNT) % SLIDE_COUNT;
+    track.style.transition = animate ? '' : 'none';
+    track.style.transform = `translateX(-${currentSlide * (100 / SLIDE_COUNT)}%)`;
+    dotBtns.forEach((btn, i) => btn.classList.toggle('active', i === currentSlide));
+    renderSlideText(currentSlide);
+  }
+
+  dotBtns.forEach((btn) => {
+    btn.addEventListener('click', () => goToSlide(parseInt(btn.dataset.index, 10)));
+  });
+
+  tapPrev.addEventListener('click', () => goToSlide(currentSlide - 1));
+  tapNext.addEventListener('click', () => goToSlide(currentSlide + 1));
+
+  // 드래그 / 스와이프로 슬라이드 전환
+  let dragging = false;
+  let dragStartX = 0;
+  let dragDeltaX = 0;
+  let containerWidth = 1;
+
+  function dragStart(x) {
+    dragging = true;
+    dragStartX = x;
+    dragDeltaX = 0;
+    containerWidth = sliderContainer.getBoundingClientRect().width || 1;
+    track.classList.add('dragging');
+  }
+  function dragMove(x) {
+    if (!dragging) return;
+    dragDeltaX = x - dragStartX;
+    const basePercent = -currentSlide * (100 / SLIDE_COUNT);
+    const dragPercent = (dragDeltaX / containerWidth) * (100 / SLIDE_COUNT);
+    track.style.transform = `translateX(${basePercent + dragPercent}%)`;
+  }
+  function dragEnd() {
+    if (!dragging) return;
+    dragging = false;
+    track.classList.remove('dragging');
+    const threshold = containerWidth * 0.15;
+    if (Math.abs(dragDeltaX) > threshold) {
+      goToSlide(currentSlide + (dragDeltaX < 0 ? 1 : -1));
+    } else {
+      goToSlide(currentSlide);
+    }
+  }
+
+  sliderContainer.addEventListener('pointerdown', (e) => {
+    if (e.pointerType === 'mouse' && e.button !== 0) return;
+    dragStart(e.clientX);
+  });
+  window.addEventListener('pointermove', (e) => dragMove(e.clientX));
+  window.addEventListener('pointerup', dragEnd);
+  window.addEventListener('pointercancel', dragEnd);
+
+  sliderContainer.addEventListener('touchstart', (e) => dragStart(e.touches[0].clientX), { passive: true });
+  sliderContainer.addEventListener('touchmove', (e) => dragMove(e.touches[0].clientX), { passive: true });
+  sliderContainer.addEventListener('touchend', dragEnd);
+
+  // 키보드 화살표로도 이동 가능
+  sliderContainer.setAttribute('tabindex', '0');
+  sliderContainer.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') goToSlide(currentSlide - 1);
+    if (e.key === 'ArrowRight') goToSlide(currentSlide + 1);
+  });
+
+  // NPC Image Slider (이미지만 전환, 동그라미 없는 화살표 버전)
+  // NPC 인물 설명 (슬라이드마다 전환)
+  const npcData = [
+    {
+      name: "에블린 헤스테리아 (Evelyn Hesteria)",
+      meta: "막내 황녀 · ENFP 7w6",
+      desc: "루베루스와 동갑인 제국의 막내 황녀. 환술을 예쁜 마법이라 감탄하며 함께 사고 치는 악동 콤비."
+    },
+    {
+      name: "이안 알렉시스 헤스테리아 (Ian Alexis Hesteria)",
+      meta: "황태자 · INTJ 3w4 · 언령",
+      desc: "16세의 제국 황태자. 황실 혈통의 언령을 앞세워 벨몬가 통제를 꾀하며 루베루스와 유모를 변수로 주시한다."
+    },
+    {
+      name: "케이언 펠",
+      meta: "은빛 여우 길드장",
+      desc: "무역로 최대 용병단 은빛 여우 길드의 길드장. 루베루스와 우호 계약을 맺는다."
+    },
+    {
+      name: "바란 (Baran)",
+      meta: "용병대장 · ESTP 8w9",
+      desc: "2m에 육박하는 거구의 용병대장. 호탕한 의리파지만 악동들의 장난에 번번이 낚인다. 루베루스의 마력 자질을 눈여겨본다."
+    }
+  ];
+
+  const NPC_COUNT = npcData.length;
+  let npcSlide = 0;
+  const npcContainer = document.querySelector('#npcTrack').closest('.slider-container');
+  const npcTrack = document.getElementById('npcTrack');
+  const npcDots = document.querySelectorAll('#npcDots .dot-btn');
+  const npcPrev = document.getElementById('npcTapPrev');
+  const npcNext = document.getElementById('npcTapNext');
+  const npcNameEl = document.getElementById('npcName');
+  const npcMetaEl = document.getElementById('npcMeta');
+  const npcDescEl = document.getElementById('npcDesc');
+
+  function renderNpcText(index) {
+    if (!npcData[index]) return;
+    [npcNameEl, npcMetaEl, npcDescEl].forEach(el => el.classList.add('swap'));
+    window.setTimeout(() => {
+      npcNameEl.textContent = npcData[index].name;
+      npcMetaEl.textContent = npcData[index].meta;
+      npcDescEl.textContent = npcData[index].desc;
+      [npcNameEl, npcMetaEl, npcDescEl].forEach(el => el.classList.remove('swap'));
+    }, 180);
+  }
+
+  function npcGoTo(index) {
+    npcSlide = ((index % NPC_COUNT) + NPC_COUNT) % NPC_COUNT;
+    npcTrack.style.transform = `translateX(-${npcSlide * (100 / NPC_COUNT)}%)`;
+    npcDots.forEach((btn, i) => btn.classList.toggle('active', i === npcSlide));
+    renderNpcText(npcSlide);
+  }
+
+  npcDots.forEach((btn) => {
+    btn.addEventListener('click', () => npcGoTo(parseInt(btn.dataset.index, 10)));
+  });
+
+  npcPrev.addEventListener('click', () => npcGoTo(npcSlide - 1));
+  npcNext.addEventListener('click', () => npcGoTo(npcSlide + 1));
+
+  let npcDragging = false;
+  let npcStartX = 0;
+  let npcDeltaX = 0;
+  let npcWidth = 1;
+
+  function npcStart(x) {
+    npcDragging = true;
+    npcStartX = x;
+    npcDeltaX = 0;
+    npcWidth = npcContainer.getBoundingClientRect().width || 1;
+    npcTrack.classList.add('dragging');
+  }
+  function npcMove(x) {
+    if (!npcDragging) return;
+    npcDeltaX = x - npcStartX;
+    const base = -npcSlide * (100 / NPC_COUNT);
+    const dp = (npcDeltaX / npcWidth) * (100 / NPC_COUNT);
+    npcTrack.style.transform = `translateX(${base + dp}%)`;
+  }
+  function npcEnd() {
+    if (!npcDragging) return;
+    npcDragging = false;
+    npcTrack.classList.remove('dragging');
+    if (Math.abs(npcDeltaX) > npcWidth * 0.15) {
+      npcGoTo(npcSlide + (npcDeltaX < 0 ? 1 : -1));
+    } else {
+      npcGoTo(npcSlide);
+    }
+  }
+
+  npcContainer.addEventListener('pointerdown', (e) => {
+    if (e.pointerType === 'mouse' && e.button !== 0) return;
+    npcStart(e.clientX);
+  });
+  npcContainer.addEventListener('pointermove', (e) => npcMove(e.clientX));
+  npcContainer.addEventListener('pointerup', npcEnd);
+  npcContainer.addEventListener('pointercancel', npcEnd);
+  npcContainer.addEventListener('pointerleave', npcEnd);
+  npcContainer.addEventListener('touchstart', (e) => npcStart(e.touches[0].clientX), { passive: true });
+  npcContainer.addEventListener('touchmove', (e) => npcMove(e.touches[0].clientX), { passive: true });
+  npcContainer.addEventListener('touchend', npcEnd);
+
+  npcContainer.setAttribute('tabindex', '0');
+  npcContainer.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') npcGoTo(npcSlide - 1);
+    if (e.key === 'ArrowRight') npcGoTo(npcSlide + 1);
+  });
+
+  // 스크롤 시 등장하는 reveal 애니메이션
+  try {
+    const revealEls = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    revealEls.forEach((el) => io.observe(el));
+  } catch (e) {}
+
+  // Frost Particles
+  try {
+    const field = document.getElementById('frostField');
+    const n = window.innerWidth < 600 ? 12 : 24;
+    for(let i=0; i<n; i++){
+      const s = document.createElement('span');
+      s.style.left = (Math.random()*100)+'%';
+      s.style.top = (-10 - Math.random()*20)+'%';
+      s.style.animationDuration = (10 + Math.random()*10)+'s';
+      s.style.animationDelay = (Math.random()*10)+'s';
+      s.style.opacity = (0.2 + Math.random()*0.4).toFixed(2);
+      field.appendChild(s);
+    }
+  } catch(e) {}
+</script>
+</body>
+</html>
